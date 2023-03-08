@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Download json files
         run: |
+          ls
+          ls -lah
           wget "https://archive.org/services/search/v1/scrape?fields=creator,date,publicdate,title,description,mediatype,downloads,item_size&q=collection%3Apptos" -O src/data/json/pptos_scrape.json
           wget "https://archive.org/details/pptos&headless=1&facets_xhr=facets&morf=-creator&headless=1&output=json" -O src/data/json/pptos_users.json 
       - name: Commit to GitHub
