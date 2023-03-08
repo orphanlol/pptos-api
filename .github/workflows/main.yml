@@ -7,8 +7,6 @@ on:
 jobs:
   update_json_cache:
     runs-on: ubuntu-latest
-    env:
-      TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Download json files
         run: |
@@ -19,8 +17,10 @@ jobs:
       - name: Commit to GitHub
         run: |
           cd pptos-api
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
+          git config user.name github-actions
+          git config user.email "action@github.com"
           git add --all
           git commit -m "Update the json cache"
           git push
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
