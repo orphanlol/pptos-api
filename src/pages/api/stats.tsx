@@ -24,6 +24,7 @@ export default async function handler(req, res) {
     const userJson = await readJsonFromFile("pptos_users.json");
 
     const statsJson = createStatsJson(scrapeJson, userJson);
-
+    
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json(statsJson);
 }

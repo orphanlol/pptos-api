@@ -19,6 +19,8 @@ export default async function handler(req, res) {
     const query = req.query;
     const { identifier } = query;
 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
     if (!identifier) {
         res.status(400).json({ error: 'Missing identifier' });
     } else {

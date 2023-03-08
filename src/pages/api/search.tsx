@@ -140,6 +140,8 @@ export default async function handler(req, res) {
 
   const fileContents = await readJsonFromFile('pptos_scrape.json');
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
   if (!creator && !identifier) {
     const data = await removeMediatypeFromList(fileContents, sort, reverse);
     res.status(200).json(data)
