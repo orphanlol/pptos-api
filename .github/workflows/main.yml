@@ -7,12 +7,10 @@ on:
 jobs:
   update_json_cache:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Download json files
         run: |
-          git clone https://{GITHUB_TOKEN}github.com/quintenvandamme/pptos-api.git
+          git clone https://${{ secrets.GITHUB_TOKEN }}github.com/quintenvandamme/pptos-api.git
           cd pptos-api
           wget "https://archive.org/services/search/v1/scrape?fields=creator,date,publicdate,title,description,mediatype,downloads,item_size&q=collection%3Apptos" -O src/data/json/pptos_scrape.json
           wget "https://archive.org/details/pptos&headless=1&facets_xhr=facets&morf=-creator&headless=1&output=json" -O src/data/json/pptos_users.json 
