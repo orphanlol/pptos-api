@@ -17,6 +17,7 @@ jobs:
           wget "https://archive.org/details/pptos&headless=1&facets_xhr=facets&morf=-creator&headless=1&output=json" -O src/data/json/pptos_users.json 
       - name: Commit to GitHub
         run: |
+          cd pptos-api
           git config --global user.name "github-actiuons[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
