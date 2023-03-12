@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     const query = req.query;
     const { identifier } = query;
 
+    res.setHeader('Cache-Control', 'no-store');
     res.setHeader('Access-Control-Allow-Origin', '*');
 
     if (!identifier) {
